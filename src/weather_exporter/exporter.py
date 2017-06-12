@@ -20,7 +20,7 @@ class WeatherExporter:
       'dark_sky_api_url': "{}/{}".format(dark_sky_api_uri,dark_sky_api_key),
       'dark_sky_api_interval': int(os.getenv('DARK_SKY_API_INTERVAL', 600)),
       'endpoint_port': int(os.getenv('ENDPOINT_PORT', 9265)),
-      'cities': os.getenv('CITIES', "nyc,tokyo,vancouver,lima,london"),
+      'cities': os.getenv('CITIES', "nyc,tokyo,vancouver,lima,london,shanghai"),
     }
 
   def get_location(self,city):
