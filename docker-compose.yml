@@ -1,0 +1,15 @@
+version: '2'
+services:
+  weather_exporter:
+    build: .
+    image: ${ORGANIZATION}/${CONTAINER}:${VERSION}
+    container_name: ${CONTAINER}
+    ports:
+      - ${ENDPOINT_PORT}:${ENDPOINT_PORT}
+    environment:
+      - DARK_SKY_API_KEY=${DARK_SKY_API_KEY}
+      - ENDPOINT_PORT=${ENDPOINT_PORT}
+      - DARK_SKY_API_INTERVAL=${DARK_SKY_API_INTERVAL}
+    volumes:
+      - ./src/weather_exporter:/weather_exporter
+      
