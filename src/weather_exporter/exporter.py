@@ -42,7 +42,6 @@ if __name__ == "__main__":
   options = options.get()
   exporter = WeatherExporter(options)
   start_http_server(options['endpoint_port'])
-
   while True:
     for city in options['cities'].split(','):
       exporter.report_metrics(city)
