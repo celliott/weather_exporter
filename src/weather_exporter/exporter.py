@@ -9,15 +9,13 @@ class WeatherExporter:
     self.guages={}
     self.weather={}
 
-  def get_location(self,city):
-    geolocator = Nominatim()
-    return geolocator.geocode(city)
-
   def get_weather(self,city):
-    location = self.get_location(city)
+    location = Nominatim().geocode(city)
     url = "{0}/{1},{2}".format(options['dark_sky_api_url'],location.latitude,location.longitude)
-    response = requests.get(url).json()
-    self.weather["{}".format(city)] = response
+    try:
+      response = requests.get(url).json()
+      self.weather["{}".format(city)] = response
+    except: pass
 
   def to_underscore(self,str):
     return re.sub("([A-Z])", "_\\1", str).lower().lstrip("_")
