@@ -1,25 +1,23 @@
-FROM celliott/base:latest
+FROM python:2.7
 MAINTAINER celliott
 
-# Install unix dependencies
+# install unix dependencies
 RUN apt-get update && \
   apt-get autoremove -y && \
   apt-get install -y \
-    vim \
-    supervisor
+    supervisor \
+    python-pip
 
-# Install python dependencies
-RUN pip install \
-  prometheus_client \
-  requests \
-  redis \
-  geopy
+# install python dependencies
+ADD ./requirements.txt /requirements.txt
+RUN pip install -r /requirements.txt
 
-# Add supervisor config
+# add supervisor config
 ADD ./config/supervisor/* /etc/supervisor/conf.d/
 
-# Add hl-site-check script
-ADD ./src/weather_exporter /weather_exporter
-RUN chmod +x /weather_exporter/*
+# add weather_exporter script
+ADD ./src/weather_exporter /opt/weather_exporter
+RUN chmod +x /opt/weather_exporter/*
 
+# run supervisor
 CMD ["/usr/bin/supervisord", "-n"]

@@ -9,7 +9,7 @@ services:
     environment:
       - DARK_SKY_API_KEY=${DARK_SKY_API_KEY}
       - ENDPOINT_PORT=${ENDPOINT_PORT}
-      - DARK_SKY_API_INTERVAL=${DARK_SKY_API_INTERVAL}
+      - SCRAPE_INTERVAL=${SCRAPE_INTERVAL}
     volumes:
       - ./src/weather_exporter:/weather_exporter
       
