@@ -32,9 +32,12 @@ class WeatherExporter:
     try:
       self.add_guage(latest_weather['currently'])
     except: pass
-    for key, value in latest_weather['currently'].iteritems():
-      if type(value) == int or type(value) == float:
-        self.guages["{}".format(key)].labels(city).set(value)
+
+    try:
+      for key, value in latest_weather['currently'].iteritems():
+        if type(value) == int or type(value) == float:
+          self.guages["{}".format(key)].labels(city).set(value)
+    except: pass
 
 if __name__ == "__main__":
   options = options.get()
