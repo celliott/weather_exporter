@@ -10,6 +10,7 @@ services:
       - DARK_SKY_API_KEY=${DARK_SKY_API_KEY}
       - ENDPOINT_PORT=${ENDPOINT_PORT}
       - SCRAPE_INTERVAL=${SCRAPE_INTERVAL}
+      - CITIES=${CITIES}
     volumes:
       - ./src/weather_exporter:/weather_exporter
       

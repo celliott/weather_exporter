@@ -22,7 +22,7 @@ SCRAPE_INTERVAL=10000
 
 #### Run container
 ```bash
-$ make run
+$ make up
 ```
 
 #### Prometheus Endpoint
