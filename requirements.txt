@@ -2,3 +2,4 @@ prometheus_client
 requests
 redis
 geopy
+backports.functools_lru_cache

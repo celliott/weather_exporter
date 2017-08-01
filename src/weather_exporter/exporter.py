@@ -3,6 +3,15 @@
 import requests, re, time, options
 from prometheus_client import start_http_server, Gauge
 from geopy.geocoders import Nominatim
+try:
+  from functools import lru_cache
+except ImportError:
+  from backports.functools_lru_cache import lru_cache
+
+@lru_cache()
+def get_location(city):
+    location = Nominatim().geocode(city)
+    return location
 
 class WeatherExporter:
   def __init__(self,options):
@@ -10,7 +19,7 @@ class WeatherExporter:
     self.weather={}
 
   def get_weather(self,city):
-    location = Nominatim().geocode(city)
+    location = get_location(city)
     url = "{0}/{1},{2}".format(options['dark_sky_api_url'],location.latitude,location.longitude)
     try:
       response = requests.get(url).json()
