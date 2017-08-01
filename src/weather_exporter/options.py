@@ -14,4 +14,5 @@ def get():
     'scrape_interval': int(os.getenv('SCRAPE_INTERVAL', 600)),
     'endpoint_port': int(os.getenv('ENDPOINT_PORT', 9265)),
     'cities': os.getenv('CITIES', "nyc,tokyo,vancouver,lima,london,shanghai"),
+    'geocode_timeout': int(os.getenv('GEOCODE_TIMEOUT', 10)),
   }
