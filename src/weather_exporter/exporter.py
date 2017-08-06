@@ -25,7 +25,8 @@ class WeatherExporter:
     try:
       response = requests.get(url).json()
       self.weather["{}".format(city)] = response
-    except: pass
+    except requests.exceptions.RequestException as e:
+      print e
 
   def to_underscore(self,str):
     return re.sub("([A-Z])", "_\\1", str).lower().lstrip("_")
