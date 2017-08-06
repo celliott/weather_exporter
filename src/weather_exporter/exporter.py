@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# vim: tabstop=2 expandtab shiftwidth=2 softtabstop=2
 
 import requests, re, time, options
 from prometheus_client import start_http_server, Gauge
@@ -10,8 +11,8 @@ except ImportError:
 
 @lru_cache()
 def get_location(city):
-    location = Nominatim(timeout=options['geocode_timeout']).geocode(city)
-    return location
+  location = Nominatim(timeout=options['geocode_timeout']).geocode(city)
+  return location
 
 class WeatherExporter:
   def __init__(self,options):
