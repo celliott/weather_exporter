@@ -16,7 +16,7 @@ $ export DARK_SKY_API_KEY=<dark_ski_api_key>
 ```
 # ENV Variables
 ENDPOINT_PORT=9265
-CITIES="nyc,portland"
+CITIES=nyc,portland or,london
 SCRAPE_INTERVAL=10000
 ```
 
