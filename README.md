@@ -7,6 +7,23 @@ A docker container for running a prometheus weather_exporter using Dark Sky API.
 
 ## Usage
 
+### Configuration
+
+`weather_exporter` can be configured via json file, environment, and/or commandline.
+Configuration option names are the same across all methods. Environment variables _MUST BE CAPITALIZED_.
+
+#### Configuration Options
+
+ - `config`: path to a json config file.
+ - `dark_sky_api_key`: API key to query with. _REQUIRED_.
+ - `dark_sky_api_uri`: URL of the darksky.net api (version as of 10/10/2017). Defaults to `https://api.darksky.net/forecast`.
+ - `scrape_interval`: how often to poll darksky.net for data in seconds. Defaults to `600` seconds.
+ - `endpoint_port`: what port to expose `weather_exporter` on. Defaults to `9265`.
+ - `cities`: comma-separated list of cities as understood by [`Nominatim`](https://wiki.openstreetmap.org/wiki/Nominatim). Defaults to "`nyc,tokyo,lima,london,shanghai`".
+ - `geocode_timeout`: timeout in seconds on api calls to [`Nominatim`](https://wiki.openstreetmap.org/wiki/Nominatim). Defaults to `10` seconds.
+
+### Simple Setup and Go
+
 #### Export DARK_SKY_API_KEY
 ```
 $ export DARK_SKY_API_KEY=<dark_ski_api_key>
