@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# vim: tabstop=2 expandtab shiftwidth=2 softtabstop=2
 
 import requests, re, time, options
 from prometheus_client import start_http_server, Gauge
@@ -24,7 +25,8 @@ class WeatherExporter:
     try:
       response = requests.get(url).json()
       self.weather["{}".format(city)] = response
-    except: pass
+    except requests.exceptions.RequestException as e:
+      print e
 
   def to_underscore(self,str):
     return re.sub("([A-Z])", "_\\1", str).lower().lstrip("_")
