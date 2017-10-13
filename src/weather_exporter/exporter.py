@@ -11,7 +11,7 @@ except ImportError:
 
 @lru_cache()
 def get_location(city):
-  location = Nominatim(timeout=options['geocode_timeout']).geocode(city)
+  location = Nominatim(timeout=int(options['geocode_timeout'])).geocode(city)
   return location
 
 class WeatherExporter:
