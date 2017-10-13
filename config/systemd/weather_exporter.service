@@ -1,0 +1,14 @@
+[Unit]
+Description=Weather Exporter
+After=docker.service
+Requires=docker.service
+
+[Service]
+TimeoutStartSec=0
+Restart=always
+ExecStartPre=-/usr/bin/docker stop weather_exporter 
+ExecStartPre=-/usr/bin/docker rm weather_exporter
+ExecStart=/usr/bin/docker run --rm -p 9265:9265 --name weather_exporter celliott/weather_exporter
+
+[Install]
+WantedBy=multi-user.target
