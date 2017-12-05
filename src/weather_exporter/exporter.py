@@ -22,8 +22,11 @@ class WeatherExporter:
   def get_weather(self,city):
     location = get_location(city)
     url = "{0}/{1},{2}".format(options['dark_sky_api_url'],location.latitude,location.longitude)
+    params = {
+        'units': options['units']
+    }
     try:
-      response = requests.get(url).json()
+      response = requests.get(url, params=params).json()
       self.weather["{}".format(city)] = response
     except requests.exceptions.RequestException as e:
       print e

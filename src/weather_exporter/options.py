@@ -15,7 +15,8 @@ DEFAULT_OPTIONS = {
   'scrape_interval': 600,
   'endpoint_port': 9265,
   'cities': 'nyc,tokyo,lima,london,shanghai',
-  'geocode_timeout': 10
+  'geocode_timeout': 10,
+  'units': 'us'
 }
 
 # PARSER is an instance of argparse.ArgumentParser.
