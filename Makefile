@@ -11,7 +11,7 @@ build : validate
 	docker-compose build
 
 push :
-	docker push $(ORGANIZATION)/$(CONTAINER):$(VERSION)
+	docker-compose push
 
 up :
 	docker-compose up -d
