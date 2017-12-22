@@ -1,11 +1,9 @@
-# weather_exporter docker-compose makefile
-
 include .env
 
 .PHONY: up
 
 validate :
-	docker-compose config
+	docker-compose config --quiet
 
 build : validate
 	docker-compose build
