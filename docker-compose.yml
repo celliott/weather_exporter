@@ -1,8 +1,8 @@
 version: '2'
 services:
   weather_exporter:
-    build: .
-    image: ${ORGANIZATION}/${CONTAINER}:${VERSION}
+    build: ./docker
+    image: ${ORGANIZATION}/${SERVICE}:${VERSION}
     container_name: ${CONTAINER}
     ports:
       - ${ENDPOINT_PORT}:${ENDPOINT_PORT}

@@ -50,7 +50,7 @@ http://localhost:9265
 #### Prometheus config
 ```yaml
 scrape_configs:
-          
+
   - job_name: weather_exporter
     metrics_path: /
     static_configs:
@@ -63,5 +63,8 @@ scrape_configs:
 
 #### To build and push container docker hub
 ```bash
-$ make build && make push
+$ make push
 ```
+
+### Helm chart
+NOTE Intended to be used with external-dns, nginx-ingress, and kube-lego

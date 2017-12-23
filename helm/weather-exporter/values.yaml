@@ -1,10 +1,12 @@
 replicaCount: 3
+
 image:
-  repository: celliott/weather_exporter
+  repository: celliott/weather-exporter
   tag: latest
   pullPolicy: IfNotPresent
+
 service:
-  name: weather_exporter
+  name: weather-exporter
   type: ClusterIP
   externalPort: 9265
   internalPort: 9265
