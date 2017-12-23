@@ -6,3 +6,4 @@ SCRAPE_INTERVAL=600
 ORGANIZATION=celliott
 CONTAINER=weather_exporter
 VERSION=latest
+

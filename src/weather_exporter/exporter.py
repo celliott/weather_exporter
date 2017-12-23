@@ -1,13 +1,21 @@
 #!/usr/bin/env python
 # vim: tabstop=2 expandtab shiftwidth=2 softtabstop=2
 
-import requests, re, time, options
+import logging
+import requests
+import re
+import time
+import options
+
 from prometheus_client import start_http_server, Gauge
 from geopy.geocoders import Nominatim
 try:
   from functools import lru_cache
 except ImportError:
   from backports.functools_lru_cache import lru_cache
+
+logging.basicConfig(level=logging.INFO, format='%(asctime)s %(levelname)s: %(message)s')
+logger = logging.getLogger(__name__)
 
 @lru_cache()
 def get_location(city):
@@ -22,11 +30,17 @@ class WeatherExporter:
   def get_weather(self,city):
     location = get_location(city)
     url = "{0}/{1},{2}".format(options['dark_sky_api_url'],location.latitude,location.longitude)
+    params = {
+        'units': options['units']
+    }
     try:
-      response = requests.get(url).json()
-      self.weather["{}".format(city)] = response
+      response = requests.get(url, params=params)
+      response.raise_for_status()
+      self.weather["{}".format(city)] = response.json()
     except requests.exceptions.RequestException as e:
-      print e
+      logger.error('Error while querying Dark Sky API: %s', e)
+      if e.response is not None:
+        logger.error('Response: %s', e.response.text)
 
   def to_underscore(self,str):
     return re.sub("([A-Z])", "_\\1", str).lower().lstrip("_")

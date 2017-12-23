@@ -21,6 +21,7 @@ Configuration option names are the same across all methods. Environment variable
  - `endpoint_port`: what port to expose `weather_exporter` on. Defaults to `9265`.
  - `cities`: comma-separated list of cities as understood by [`Nominatim`](https://wiki.openstreetmap.org/wiki/Nominatim). Defaults to "`nyc,tokyo,lima,london,shanghai`".
  - `geocode_timeout`: timeout in seconds on api calls to [`Nominatim`](https://wiki.openstreetmap.org/wiki/Nominatim). Defaults to `10` seconds.
+ - `units`: unit of the weather data. See [Dark Sky API Docs](https://darksky.net/dev/docs#forecast-request) for a list of valid units. Defaults to `us` (imperial units).
 
 ### Simple Setup and Go
 

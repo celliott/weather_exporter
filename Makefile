@@ -1,17 +1,16 @@
-# weather_exporter docker-compose makefile
-
-include .env
+include defaults.mk
+export
 
 .PHONY: up
 
 validate :
-	docker-compose config
+	docker-compose config --quiet
 
 build : validate
 	docker-compose build
 
 push :
-	docker push $(ORGANIZATION)/$(CONTAINER):$(VERSION)
+	docker-compose push
 
 up :
 	docker-compose up -d

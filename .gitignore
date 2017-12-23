@@ -6,6 +6,5 @@
 
 .vscode
 
-
 # Ignore completion assists
 *.rope*
