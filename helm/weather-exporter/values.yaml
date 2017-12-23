@@ -1,20 +1,14 @@
 replicaCount: 3
 
 image:
-  repository: celliott/weather-exporter
+  repository: celliott/weather_exporter
   tag: latest
   pullPolicy: IfNotPresent
 
 service:
-  name: weather-exporter
+  name: weather_exporter
   type: ClusterIP
   externalPort: 9265
   internalPort: 9265
 
-# To be used with external-dns, nginx-ingress, and kube-lego
-ingress:
-  enabled: false
-  hostname:
-  tls:
-    enabled: true
 resources: {}

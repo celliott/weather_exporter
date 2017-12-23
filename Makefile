@@ -34,7 +34,7 @@ helm-deploy : init
 		--set darkSkyAPIKey=${DARK_SKY_API_KEY} \
 		--set endpointPort=${DARK_SKY_API_KEY} \
 		--set scrapeInterval=${SCRAPE_INTERVAL} \
-		--set ingress.hostname=kibana.$(ENVIRONMENT).$(DOMAIN) \
+		--set ingress.hostname=$(SERVICE).$(DOMAIN) \
 		--set ingress.enabled=false \
 		--set cities=${CITIES}
 

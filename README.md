@@ -67,4 +67,15 @@ $ make push
 ```
 
 ### Helm chart
-NOTE Intended to be used with external-dns, nginx-ingress, and kube-lego
+
+#### Deploy
+
+```bash
+$ make helm-deploy
+```
+
+#### Delete
+
+```bash
+$ make helm-delete
+```

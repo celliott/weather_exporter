@@ -3,8 +3,7 @@ ORGANIZATION=celliott
 VERSION=latest
 
 # ENV Variables
-SERVICE=weather-exporter
+SERVICE=weather_exporter
+DOMAIN=example.com
 ENDPOINT_PORT=9265
 SCRAPE_INTERVAL=600
-ENVIRONMENT ?= dev
-DOMAIN ?= example.com
