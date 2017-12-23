@@ -2,7 +2,11 @@
 # vim: tabstop=2 expandtab shiftwidth=2 softtabstop=2
 
 import logging
-import requests, re, time, options
+import requests
+import re
+import time
+import options
+
 from prometheus_client import start_http_server, Gauge
 from geopy.geocoders import Nominatim
 try:

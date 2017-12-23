@@ -1,4 +1,5 @@
-include .env
+include defaults.mk
+export
 
 .PHONY: up
 
