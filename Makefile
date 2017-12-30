@@ -26,17 +26,15 @@ shell :
 
 reset : down up tail
 
-helm-deploy : init
+deploy :
 	helm init --client-only
 	-kubectl create namespace $(SERVICE)
 	helm upgrade -i $(SERVICE) helm/$(SERVICE) \
 		--namespace $(SERVICE) \
 		--set darkSkyAPIKey=${DARK_SKY_API_KEY} \
-		--set endpointPort=${DARK_SKY_API_KEY} \
 		--set scrapeInterval=${SCRAPE_INTERVAL} \
 		--set ingress.hostname=$(SERVICE).$(DOMAIN) \
-		--set ingress.enabled=false \
-		--set cities=${CITIES}
+		--set ingress.enabled=false
 
-helm-delete : init
+delete :
 	helm del --purge $(SERVICE)

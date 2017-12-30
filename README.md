@@ -61,7 +61,7 @@ scrape_configs:
           alias: 'weather-exporter'
  ```
 
-#### To build and push container docker hub
+#### To build and push container to docker hub
 ```bash
 $ make push
 ```
@@ -71,11 +71,20 @@ $ make push
 #### Deploy
 
 ```bash
-$ make helm-deploy
+$ export DARK_SKY_API_KEY=<dark_ski_api_key>
+$ make deploy
 ```
+
+```
+$ export POD_NAME=$(kubectl get pods --namespace weather-exporter -l "app=weather-exporter,release=weather-exporter" -o jsonpath="{.items[0].metadata.name}")
+
+$ kubectl port-forward --namespace weather-exporter $POD_NAME 9265:9265
+```
+
+In a browser, open `127.0.0.1:9265`
 
 #### Delete
 
 ```bash
-$ make helm-delete
+$ make delete
 ```
