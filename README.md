@@ -50,7 +50,7 @@ http://localhost:9265
 #### Prometheus config
 ```yaml
 scrape_configs:
-          
+
   - job_name: weather_exporter
     metrics_path: /
     static_configs:
@@ -61,7 +61,30 @@ scrape_configs:
           alias: 'weather-exporter'
  ```
 
-#### To build and push container docker hub
+#### To build and push container to docker hub
 ```bash
-$ make build && make push
+$ make push
+```
+
+### Helm chart
+
+#### Deploy
+
+```bash
+$ export DARK_SKY_API_KEY=<dark_ski_api_key>
+$ make deploy
+```
+
+```
+$ export POD_NAME=$(kubectl get pods --namespace weather-exporter -l "app=weather-exporter,release=weather-exporter" -o jsonpath="{.items[0].metadata.name}")
+
+$ kubectl port-forward --namespace weather-exporter $POD_NAME 9265:9265
+```
+
+In a browser, open `127.0.0.1:9265`
+
+#### Delete
+
+```bash
+$ make delete
 ```

@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ template "fullname" . }}
+  labels:
+    app: {{ template "name" . }}
+    chart: {{ .Chart.Name }}-{{ .Chart.Version | replace "+" "_" }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+data:
+  endpoint-port: "{{ .Values.endpointPort }}"
+  scrape-interval: "{{ .Values.scrapeInterval }}"
+  cities: "{{ .Values.cities }}"

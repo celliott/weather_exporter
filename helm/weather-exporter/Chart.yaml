@@ -1,0 +1,16 @@
+apiVersion: v1
+description: A Helm chart for running weather_exporter in Kubernetes
+name: weather-exporter
+version: 0.1.0
+icon: https://grafana.com/api/dashboards/2441/images/1466/thumbnail
+keywords:
+- kubernetes deployment
+- helm release
+- prometheus
+- weather_exporter
+- dark sky
+home: https://grafana.com/dashboards/2441
+sources:
+- https://github.com/celliott/weather_exporter
+maintainers:
+- name: celliott
