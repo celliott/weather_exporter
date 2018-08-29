@@ -11,3 +11,4 @@ data:
   endpoint-port: "{{ .Values.endpointPort }}"
   scrape-interval: "{{ .Values.scrapeInterval }}"
   cities: "{{ .Values.cities }}"
+  units: {{ if .Values.units }}{{ .Values.units }}{{ else }}us{{ end }}
