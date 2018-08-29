@@ -42,6 +42,11 @@ spec:
                 secretKeyRef:
                   name: {{ template "fullname" . }}
                   key: dark-sky-api-key
+            - name: UNITS
+              valueFrom:
+                configMapKeyRef:
+                  name: {{ template "fullname" . }}
+                  key: units
           livenessProbe:
             httpGet:
               path: /
