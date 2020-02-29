@@ -11,4 +11,4 @@ services:
       - SCRAPE_INTERVAL=${SCRAPE_INTERVAL}
       - CITIES=${CITIES}
     volumes:
-      - ./src/weather_exporter:/opt/weather_exporter
+      - ./docker/src/weather_exporter:/opt/weather_exporter
